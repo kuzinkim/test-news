@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app">
+        <h1 class="title">{{ product }}</h1>
+        <div class="container">
+            <div class="news">
+                <div class="news__filter filter">
+                    <div class="filter__button button">
+                        <span class="filter__title">Вид</span>
+                        <div @click="isShowList" class="button__list btn">
+                            <div class="button__list-icon">
+                                <img src="assets/list.png" alt="list">
+                            </div>
+                            <span class="button__text">Спсиок</span>
+                        </div>
+                        <div @click="isShowTile" class="button__tile btn">
+                            <div class="button__tile-icon">
+                                <img src="assets/tile.png" alt="list">
+                            </div>
+                            <span class="button__text">Плитка</span>
+                        </div>
+                    </div>
+                    <div class="filter__sort">
+                        <span class="filter__title">Сортировать</span>
+                        <div class="filter__select">
+                            <select name="sort" id="sort">
+                                <option value="1">По дате</option>
+                                <option value="2">По умолчанию</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter__amount">
+                        <span class="filter__title">Количество</span>
+                        <div class="filter__select">
+                            <select name="amount" id="amount">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter__count">
+                        <span class="filter__title">1-12 из 13</span>
+                    </div>
+                </div>
+                <div v-bind:class="{ news__inner: !isTile, news__innerTile: isTile,  }">
+                    <div class="news__item">
+                        <div class="news__item-pic" style="background-image: url(assets/1.jpg);"></div>
+                        <div class="news__item-wrap">
+                            <span class="news__item-title">Some title</span>
+                            <span class="news__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quam iure laudantium provident sapiente incidunt dolor nemo molestiae. Ex quibusdam, illum eum sit architecto adipisci iusto laudantium saepe modi maxime?</span>
+                        </div>
+                    </div>
+                    <div class="news__item">
+                        <div class="news__item-pic" style="background-image: url(assets/3.jpg);"></div>
+                        <div class="news__item-wrap">
+                            <span class="news__item-title">Some title</span>
+                            <span class="news__item-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem et nulla perferendis sapiente natus vel soluta fuga ex quo ipsam perspiciatis accusamus laborum magnam rerum, suscipit quibusdam ipsum nam? Doloribus.
+                            Iste sequi molestiae praesentium deserunt ipsum quo doloribus, laborum libero iusto voluptate voluptatibus sed placeat eos fugiat autem debitis officiis magni repudiandae ea possimus obcaecati? Tempora, possimus. Voluptate, fuga inventore.</span>
+                        </div>
+                    </div>
+                    <div class="news__item">
+                        <div class="news__item-pic" style="background-image: url(assets/4.jpg);"></div>
+                        <div class="news__item-wrap">
+                            <span class="news__item-title">Some title</span>
+                            <span class="news__item-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis dolor perferendis neque deleniti debitis harum cupiditate illum, laboriosam, rerum voluptatum quaerat nostrum ratione veniam atque numquam, animi tenetur corporis nisi?Perferendis, dicta doloribus mollitia eveniet nesciunt rerum non maxime harum voluptatibus unde, nulla similique repudiandae quo, amet autem ad. Maiores ipsa necessitatibus perspiciatis vel mollitia rerum ipsum quasi sunt fuga.</span>
+                        </div>
+                    </div>
+                    <div class="news__item">
+                        <div class="news__item-pic" style="background-image: url(assets/5.jpg);"></div>
+                        <div class="news__item-wrap">
+                            <span class="news__item-title">Some title</span>
+                            <span class="news__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora doloribus placeat perspiciatis, quaerat natus tenetur voluptates, esse vero dolore ipsam similique sapiente nemo! Minus exercitationem, officia cupiditate aut numquam expedita?
+                            Voluptatibus quae, error doloremque, sunt unde harum fuga possimus expedita, rerum distinctio magnam? Repellendus deserunt beatae possimus sit suscipit dolore voluptatum? Quod repellendus quia vitae tempora quae officiis ut id.
+                            Vitae, beatae quos error quasi odit nam perferendis veritatis iste vel asperiores quidem repellendus unde, at fugit nihil voluptate odio maxime libero perspiciatis sapiente pariatur facere, quam deleniti? Earum, aliquid.
+                            Similique numquam sunt in provident amet! Explicabo nisi harum aliquid possimus quas quidem nihil. Quaerat blanditiis, hic dolores obcaecati quod laboriosam recusandae, numquam in magnam, exercitationem mollitia atque? Illum, sequi.</span>
+                        </div>
+                    </div>
+                    <div class="news__item">
+                        <div class="news__item-pic" style="background-image: url(assets/7.jpg);"></div>
+                        <div class="news__item-wrap">
+                            <span class="news__item-title">Some title</span>
+                            <span class="news__item-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi nulla voluptates iure delectus sit blanditiis perferendis ducimus recusandae assumenda nihil saepe, non fugiat facilis veritatis quis dolorem fuga nobis autem.</span>
+                        </div>
+                    </div>
+                    <div class="news__item">
+                        <div class="news__item-pic" style="background-image: url(assets/2.jpg);"></div>
+                        <div class="news__item-wrap">
+                            <span class="news__item-title">Some title</span>
+                            <span class="news__item-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis quod aliquam aliquid unde at ea quasi atque? Iure minus laboriosam quas numquam quae praesentium, esse ipsum reiciendis iste placeat cum!
+                            Eius totam eligendi sed libero a aspernatur beatae expedita quod praesentium iste. Tempora ut minima sequi. Ipsam tempore veritatis consectetur quos asperiores amet. Reprehenderit inventore deserunt provident iste, corporis culpa.
+                            Amet maiores quod eius voluptate maxime, repellendus tempore autem. Ratione blanditiis autem cupiditate, corporis veniam eum in repudiandae aut quaerat libero fugit, provident laborum dolorum? Repellendus deleniti quia earum odio.</span>
+                        </div>
+                    </div>
+                    <div class="news__item">
+                        <div class="news__item-pic" style="background-image: url(assets/6.jpg);"></div>
+                        <div class="news__item-wrap">
+                            <span class="news__item-title">Some title</span>
+                            <span class="news__item-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga eveniet doloremque qui eius dolor pariatur maiores quidem assumenda, voluptates asperiores, id cumque cupiditate necessitatibus delectus sed, nam odio repellat alias?
+                            Ipsa nostrum cumque voluptatum iure voluptate, dolorum voluptatibus atque saepe earum eveniet, quia nam commodi veritatis totam? Facilis alias debitis corrupti quam nihil neque? Dicta earum maiores optio sit porro?
+                            Ipsam autem delectus vero quod officia repudiandae ullam rem consequatur molestiae in totam aperiam sed dolorum, itaque voluptatibus, quia provident unde deserunt asperiores impedit? Nesciunt provident ab rem ex minima?
+                            Officia ipsam tempora natus quia illum obcaecati, asperiores vero quam sint blanditiis ab facilis nam officiis deserunt recusandae magni.</span>
+                        </div>
+                    </div>
+                    <div class="news__item">
+                        <div class="news__item-pic" style="background-image: url(assets/4.jpg);"></div>
+                        <div class="news__item-wrap">
+                            <span class="news__item-title">Some title</span>
+                            <span class="news__item-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate nam, blanditiis harum maiores officia distinctio consectetur eum quia voluptatem veritatis consequuntur ipsam sit facilis inventore eaque vero provident adipisci quae.</span>
+                        </div>
+                    </div>
+                    <div class="news__item">
+                        <div class="news__item-pic" style="background-image: url(assets/1.jpg);"></div>
+                        <div class="news__item-wrap">
+                            <span class="news__item-title">Some title</span>
+                            <span class="news__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi asperiores iusto sit numquam unde suscipit, ipsa explicabo aliquam dolores repellendus illum? Iste alias laborum deserunt qui dolor laboriosam natus earum!
+                            Perspiciatis neque fugit voluptates ad facilis esse beatae mollitia consectetur corrupti a dolorem dolorum veritatis quo temporibus nemo ipsum quod, odio culpa aliquam praesentium sit error cumque nulla maiores. Mollitia?
+                            Nihil repellat natus quia deleniti totam officia. Eaque atque, voluptates tempore accusantium quisquam hic, quia molestiae accusamus similique doloremque dolor recusandae, harum aliquam mollitia rem consectetur. Laboriosam accusantium vel facere!
+                            Hic officiis illum molestias eos atque quibusdam non fugit? Fugiat sit rem architecto eos aut neque dolor tenetur ipsam ex quam doloremque corporis temporibus, itaque eum aliquam, atque illum ut!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="main.js"></script>
+</body>
+</html>
