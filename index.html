@@ -41,12 +41,9 @@
                         <span class="filter__title">Количество</span>
                         <div class="filter__select">
                             <select @change="onChangeCount($event)" name="amount" id="amount">
-                                <option v-for="(news, index) in posts" :value="index + 1">{{index+1}}</option>
+                                <option v-for="(news, index) in posts" :value="index + 1">{{index + 1}}</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="filter__count">
-                        <span class="filter__title">{{perPage}} из {{ posts.length}}</span>
                     </div>
                 </div>
                 <div v-bind:class="{ news__inner: !isTile, news__innerTile: isTile }">
@@ -62,9 +59,9 @@
 
                 </div>
                 <div class="buttons">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" v-if="page != 1" @click="page--"> << </button>
-                    <button type="button" :class="{'btn page__selected': page === pageNumber, 'btn': page != pageNumber}" v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber"> {{pageNumber}} </button>
-                    <button type="button" @click="page++" v-if="page < pages.length" class="btn btn-sm btn-outline-secondary"> >> </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" v-if="page != 1" @click="page--; onChangePage()"> << </button>
+                    <button type="button" class="btn" :class="{'page__selected': page === pageNumber}" v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber; onChangePage()"> {{pageNumber}} </button>
+                    <button type="button" @click="page++; onChangePage()" v-if="page < pages.length" class="btn btn-sm btn-outline-secondary"> >> </button>
                 </div>
             </div>
         </div>

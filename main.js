@@ -7,6 +7,18 @@ var app = new Vue({
         page: 1,
         perPage: 1,
         pages: [],
+        isSelected: false
+    },
+    mounted() {
+        const newsElem = document.querySelector('.news')
+        
+        window.addEventListener('scroll', e => {
+            var scrollTop = window.pageYOffset + window.innerHeight
+            console.log(scrollTop, newsElem.scrollHeight)
+            if(scrollTop >= newsElem.scrollHeight){
+                this.loadMore();
+            }
+        });
     },
     methods: {
         getPosts () {
@@ -17,6 +29,11 @@ var app = new Vue({
         isShowTile() {
           this.isTile = true
           console.log(this.isTile)
+        },
+        loadMore(){
+            this.perPage++
+            this.pages = [];
+            this.setPages();
         },
         isShowList() {
             this.isTile = false
@@ -36,9 +53,11 @@ var app = new Vue({
             return  posts.slice(from, to);
         },
         onChangeCount(event) {
-            this.perPage = event.target.value;
+            var selectVal = event.target.value;
+            this.perPage = selectVal;
             this.pages = [];
             this.setPages()
+            localStorage.setItem('count', this.perPage)
         },
         onChange(event) {
             var val = event.target.value
@@ -55,6 +74,12 @@ var app = new Vue({
         sortByName(){
             this.posts.sort((a,b) => a.Title.localeCompare(b.Title))
             this.pages = [];
+        },
+        onChangePage() {
+            localStorage.setItem('page', this.page)
+        },
+        onScrollNewsList() {
+            console.log('fse')
         }
     },
     computed: {
@@ -68,6 +93,15 @@ var app = new Vue({
         }
     },
     created () {
-        this.getPosts();
+        var currPage = localStorage.getItem('page')
+        var currCount = localStorage.getItem('count')
+
+        if(!currPage || !currCount ){
+            this.getPosts();
+        }else{
+            this.getPosts();
+            this.page = currPage
+            this.perPage = currCount
+        }
     }
 })
